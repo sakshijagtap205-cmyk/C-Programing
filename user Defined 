@@ -1,0 +1,68 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *fp;
+    char filename[100];
+    char data[500];
+    int i, lines;
+
+    // Taking file name from user
+    printf("Enter the file name to create (with extension): ");
+    scanf("%s", filename);
+
+    // Open file in write mode
+    fp = fopen(filename, "w");
+
+    // Check if file is created successfully
+    if (fp == NULL) {
+        printf("Error: File could not be created.\n");
+        return 1;
+    }
+
+    printf("File '%s' created successfully.\n", filename);
+
+    // Ask user how many lines to write
+    printf("Enter number of lines to write into the file: ");
+    scanf("%d", &lines);
+
+    getchar(); // clear newline from buffer
+
+    printf("Enter the content:\n");
+
+    // Writing data into file
+    for (i = 1; i <= lines; i++) {
+        printf("Line %d: ", i);
+        fgets(data, sizeof(data), stdin);
+        fputs(data, fp);
+    }
+
+    // Close file after writing
+    fclose(fp);
+
+    printf("\nData written successfully into file '%s'.\n", filename);
+
+    // Reopen file in read mode
+    fp = fopen(filename, "r");
+
+    if (fp == NULL) {
+        printf("Error: File could not be opened for reading.\n");
+        return 1;
+    }
+
+    printf("\nReading content from file '%s':\n", filename);
+    printf("-----------------------------------\n");
+
+    // Read and display file content
+    while (fgets(data, sizeof(data), fp) != NULL) {
+        printf("%s", data);
+    }
+
+    printf("\n-----------------------------------\n");
+
+    // Close file after reading
+    fclose(fp);
+
+    return 0;
+}
