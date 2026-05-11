@@ -1,0 +1,28 @@
+
+
+#include <stdio.h>
+
+int main()
+ {
+    int num = 25;      // Normal integer variable
+    int *ptr;          // Pointer variable to store address of an integer
+
+    ptr = &num;        // Store address of num in pointer ptr
+
+    // Printing value and address
+    printf("Value of num = %d\n", num);
+    printf("Address of num = %p\n", (void *)&num);
+
+    // Accessing value using pointer
+    printf("Value using pointer ptr = %d\n", *ptr);
+
+    // Printing address stored in pointer
+    printf("Address stored in ptr = %p\n", (void *)ptr);
+
+    // Changing value using pointer
+    *ptr = 50;
+
+    printf("New value of num after modification using pointer = %d\n", num);
+
+    return 0;
+}
