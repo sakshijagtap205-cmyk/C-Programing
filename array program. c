@@ -1,0 +1,26 @@
+
+
+#include <stdio.h>
+
+int main() {
+    int arr[5];
+    int i, sum = 0;
+
+    // Input array elements
+    printf("Enter 5 numbers:\n");
+    for(i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Display array elements
+    printf("Array elements are:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+        sum = sum + arr[i];
+    }
+
+    // Print sum
+    printf("\nSum of array elements = %d", sum);
+
+    return 0;
+}
